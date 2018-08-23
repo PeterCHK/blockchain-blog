@@ -6,14 +6,15 @@
 A fast, simple & powerful blog framework, powered by [Node.js](http://nodejs.org).
 Originally forked from hexo.
 
-## Features
+## Heroku Installation
+``` bash
+#node, npm and git are prerequisite
+$ sudo apt install snapd
+$ sudo snap install heroku --classic
+```
 
-- Blazing fast generating
-- Support for GitHub Flavored Markdown and most Octopress plugins
-- One-command deploy to GitHub Pages, Heroku, etc.
-- Powerful plugin system
 
-## Installation
+## Hexo installation
 
 ``` bash
 $ npm install hexo-cli -g
@@ -21,39 +22,83 @@ $ npm install hexo-cli -g
 
 ## Quick Start
 
+**Login with Heroku credentials**
+``` bash
+$ heroku login
+#enter heroku email and password
+```
+**Setup new heroku app**
+``` bash
+heroku create -a <app-name>
+```
+
 **Setup your blog**
 
 ``` bash
+#this project already initiated
 $ hexo init blog
+
 $ cd blog
+#change directory before running this to install
+npm install hexo-deployer-heroku --save
 ```
 
 **Start the server**
 
 ``` bash
+#no need to start local server if push directly to heroku
 $ hexo server
 ```
 
 **Create a new post**
 
 ``` bash
-$ hexo new "Hello Hexo"
+$ hexo new "Hello World!"
+```
+
+
+**Clean previous public and database folder**
+``` bash
+$ hexo clean
 ```
 
 **Generate static files**
-
 ``` bash
+#generate new public and database folder for deployment
 $ hexo generate
 ```
 
+**Add heroku git**
+``` bash
+#peter-blockchain
+heroku git:remote -a <git repo name>
+```
+**Add text @ blog > config.yml**
+``` bash
+deploy:
+  type: heroku
+  repo: <repo from heroku>
+```
+
+**Deploy static files**
+``` bash
+$ hexo deploy
+```
+
+**Check the heroku website**
+``` bash
+$ heroku open
+```
+
+
 ## More Information
 
-- Visit the [Awesome Hexo](https://github.com/hexojs/awesome-hexo) list
-- Read the [documentation](https://hexo.io/)
-- Find solutions in [troubleshooting](https://hexo.io/docs/troubleshooting.html)
-- Join discussion on [Google Group](https://groups.google.com/group/hexo)
-- See the [plugin list](https://hexo.io/plugins/) and the [theme list](https://hexo.io/themes/) on wiki
-- Follow [@hexojs](https://twitter.com/hexojs) for latest news
+- Visit the [peter-blockchain](peter-blockchain.herokuapp.com) website
+- Read the [hexo documentation](https://hexo.io/)
+- Find hexo solutions in [troubleshooting](https://hexo.io/docs/troubleshooting.html)
+- See the [hexo plugin list](https://hexo.io/plugins/) and the [theme list](https://hexo.io/themes/) on wiki
+- Find git repo in [Heroku dashboard](https://dashboard.heroku.com/apps)
+- Also check out [Getting Started on Heroku with Node.js](https://devcenter.heroku.com/articles/getting-started-with-nodejs) for getting started on Heroku with Node.js
 
 ## License
 

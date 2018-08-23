@@ -79,4 +79,4 @@ theme: landscape
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: heroku
-  repo: https://git.heroku.com/peter-blockchain2.git
+  repo: https://git.heroku.com/peter-blockchain.git
